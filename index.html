@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baretto di Brera — L'Aperitivo · Sousas</title>
+  <link rel="stylesheet" href="assets/baretto.css?v=4">
+  <style>
+    /* ---- Hero ---- */
+    .hero {
+      position: relative;
+      background: var(--bordo);
+      color: var(--cream);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 140px 0 80px;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(130% 100% at 78% 18%, rgba(215, 154, 81, .14), transparent 52%);
+      pointer-events: none;
+    }
+
+    .hero .wrap {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: clamp(36px, 5vw, 80px);
+      align-items: center;
+    }
+
+    .hero .lead-col {
+      max-width: 560px;
+    }
+
+    .hero h1 {
+      margin: .3em 0 .62em;
+    }
+
+    .hero .d-hero {
+      line-height: 1.1;
+    }
+
+    .hero .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 38px;
+    }
+
+    .hero .meta {
+      display: flex;
+      gap: 34px;
+      margin-top: 46px;
+      padding-top: 26px;
+      border-top: 1px solid rgba(215, 154, 81, .24);
+    }
+
+    .hero .meta div .k {
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: .6rem;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 7px;
+    }
+
+    .hero .meta div .v {
+      font-family: var(--serif);
+      font-size: 1.12rem;
+      color: #f0e2d4;
+      line-height: 1.3;
+    }
+
+    .hero .art {
+      position: relative;
+    }
+
+    .hero .art .frame {
+      aspect-ratio: 3/4;
+      box-shadow: 0 50px 90px -40px rgba(0, 0, 0, .7);
+    }
+
+    .hero .art .tag {
+      position: absolute;
+      left: -34px;
+      bottom: 46px;
+      z-index: 3;
+      box-shadow: 0 30px 60px -28px rgba(0, 0, 0, .7);
+    }
+
+    .scroll-cue {
+      position: absolute;
+      left: 50%;
+      bottom: 30px;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--sans);
+      font-size: .58rem;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: rgba(215, 154, 81, .8);
+    }
+
+    .scroll-cue .line {
+      width: 1px;
+      height: 46px;
+      background: linear-gradient(var(--gold), transparent);
+      animation: cue 2.4s var(--ease) infinite;
+    }
+
+    @keyframes cue {
+
+      0%,
+      100% {
+        transform: scaleY(.4);
+        transform-origin: top;
+        opacity: .4;
+      }
+
+      50% {
+        transform: scaleY(1);
+        opacity: 1;
+      }
+    }
+
+    /* ---- Ritual ---- */
+    .ritual .grid {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: clamp(40px, 6vw, 92px);
+      align-items: start;
+    }
+
+    .ritual .tag-wrap {
+      margin-top: 42px;
+      display: flex;
+      align-items: center;
+      gap: 26px;
+    }
+
+    /* ---- Atmosfera ---- */
+    .atmos .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(28px, 4vw, 56px);
+      align-items: end;
+    }
+
+    .atmos .txt {
+      max-width: 480px;
+      margin-bottom: 40px;
+    }
+
+    .atmos .imgs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: end;
+    }
+
+    .atmos .imgs .frame.tall {
+      aspect-ratio: 3/4.4;
+    }
+
+    .atmos .imgs .frame.short {
+      aspect-ratio: 3/3.4;
+      transform: translateY(-38px);
+    }
+
+    .atmos .vlabel {
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: .64rem;
+      letter-spacing: .4em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* ---- Localização ---- */
+    .loca .grid {
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: clamp(40px, 6vw, 88px);
+      align-items: center;
+    }
+
+    .loca .info {
+      max-width: 480px;
+    }
+
+    .loca .addr {
+      display: grid;
+      gap: 24px;
+      margin: 38px 0;
+    }
+
+    .loca .addr .k {
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: .6rem;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      margin-bottom: 8px;
+    }
+
+    .loca .addr .v {
+      font-family: var(--serif);
+      font-size: 1.32rem;
+      color: var(--ink);
+      line-height: 1.32;
+    }
+
+    /* ---- Ajuste do Container do Mapa ---- */
+    /* ---- Ajuste Atualizado para o Container do Mapa ---- */
+    /* ---- Container do Mapa Ajustado ---- */
+    .map {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4/3.4;
+      overflow: hidden;
+      outline: 1px solid rgba(215, 154, 81, .5);
+      outline-offset: 10px;
+      border-radius: 2px;
+      background-color: #f7f2e8;
+      /* Cor idêntica ao fundo da secção para camuflar */
+    }
+
+    /* Força o iframe a esticar dinamicamente sem deixar folgas */
+    .map iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
+      border: 0;
+      display: block;
+      z-index: 1;
+
+      /* Filtro elegante que já deu certo */
+      filter: grayscale(40%) contrast(110%) sepia(30%);
+      transition: filter 0.5s ease;
+    }
+
+    /* Camada visual superior para mesclar as cores */
+    .map::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: #e3d3b8;
+      mix-blend-mode: color;
+      pointer-events: none;
+      opacity: 0.5;
+      /* Suavizei um pouco para destacar mais o pin castanho */
+      z-index: 2;
+      transition: opacity 0.5s ease;
+    }
+
+    .map:hover::after {
+      opacity: 0;
+    }
+
+    .map:hover iframe {
+      filter: none;
+    }
+
+    .map svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    @media (max-width:1023px) {
+      .hero {
+        min-height: auto;
+        padding: 120px 0 70px;
+      }
+
+      .hero .wrap {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .hero .art .tag {
+        left: auto;
+        right: 0;
+      }
+
+      .ritual .grid,
+      .loca .grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .atmos .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .scroll-cue {
+        display: none;
+      }
+    }
+
+    @media (max-width:600px) {
+      .hero .meta {
+        flex-direction: column;
+        gap: 22px;
+      }
+
+      .atmos .imgs .frame.short {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <header class="nav" data-screen-label="Home">
+    <a class="brand" href="index.html">Baretto<small>di Brera</small></a>
+    <nav class="links">
+      <a href="index.html" class="active">Home</a>
+      <a href="sobre.html">Sobre</a>
+      <a href="contato.html">Contato</a>
+    </nav>
+    <a class="reserve"
+      href="https://wa.me/5519994435384?text=Ol%C3%A1!%20Gostaria%20de%20reservar%20uma%20mesa%20no%20Baretto%20di%20Brera."
+      target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path
+          d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.477-.927z" />
+      </svg>
+      Reservar
+    </a>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </header>
+
+  <main class="page">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container wrap">
+        <div class="lead-col">
+          <p class="eyebrow on-dark reveal">Dal 2024 · Sousas, Campinas</p>
+          <h1 class="display d-hero on-dark reveal d1">Aperitivo Italiano <em>&amp; Coquetelaria Clássica</em></h1>
+          <p class="lead reveal d2">No coração de Sousas, em frente à praça da Igreja. Um pedaço de Milão e a arte do
+            bem-viver — vinhos, drinks autorais e aperitivos para compartilhar.</p>
+          <div class="cta-row reveal d3">
+            <a class="btn btn-gold"
+              href="https://wa.me/5519994435384?text=Ol%C3%A1!%20Gostaria%20de%20reservar%20uma%20mesa%20no%20Baretto%20di%20Brera."
+              target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.477-.927z" />
+              </svg>
+              Reservar via WhatsApp
+            </a>
+            <a class="btn btn-ghost on-dark" href="#ritual">L'Aperitivo</a>
+          </div>
+          <div class="meta reveal d4">
+            <div>
+              <div class="k">Endereço</div>
+              <div class="v">Rua José Pedroso, 10<br>Centro · Sousas</div>
+            </div>
+            <div>
+              <div class="k">L'Ora</div>
+              <div class="v">Ter — Dom<br>a partir das 18h</div>
+            </div>
+          </div>
+        </div>
+        <div class="art reveal d2">
+          <div class="frame gilt reveal-img">
+            <img src="assets/img/interior.png" alt="Salão do Baretto di Brera com oliveira, bar e azulejos">
+            <div class="cap">Il Salotto · Sousas</div>
+          </div>
+          <div class="gold-tag tag">
+            <span class="big">18:00</span>
+            <span class="lbl">L'ora dell'aperitivo</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RITUAL -->
+    <section class="section paper ritual" id="ritual">
+      <div class="container grid">
+        <div>
+          <p class="eyebrow reveal">Il Rituale</p>
+          <h2 class="display d-xl reveal d1" style="margin-top:.3em">O Ritual Sagrado do <em>Aperitivo</em></h2>
+          <div class="tag-wrap reveal d2">
+            <div class="gold-tag"><span class="big">18:00</span><span class="lbl">L'ora dell'aperitivo</span></div>
+            <p class="muted" style="max-width:14ch; font-size:.82rem;">O momento em que o dia desacelera.</p>
+          </div>
+        </div>
+        <div class="body reveal d1">
+          <p class="lead" style="margin-bottom:1.4em">O aperitivo é mais que um drink antes do jantar. É a pausa
+            milanesa — um instante celebrado entre goles de Spritz e pequenos prazeres à mesa.</p>
+          <p>Como extensão do restaurante Brera, o Baretto traz essa tradição para Sousas com curadoria de ingredientes,
+            vinhos selecionados e coquetelaria clássica. Cada drink é preparado com calma; cada aperitivo, pensado para
+            compartilhar.</p>
+          <p>Sob a direção do Chef Executivo Marcelo Moscardi, a cozinha celebra o sabor honesto da Itália — do frescor
+            dos antepastos ao calor de uma boa conversa.</p>
+          <a href="sobre.html" class="link-gold" style="margin-top:14px">Conheça nossa história <span
+              class="arrow">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ATMOSFERA -->
+    <section class="section bordo atmos">
+      <div class="container grid">
+        <div class="txt">
+          <p class="eyebrow on-dark reveal">L'Atmosfera</p>
+          <h2 class="display d-xl on-dark reveal d1" style="margin:.3em 0 .6em">Um cantinho de Milão, <em>em
+              Sousas</em>.</h2>
+          <p class="lead reveal d2">Paredes em terracota, a oliveira na entrada, a luz quente sobre os azulejos. Um
+            refúgio íntimo onde o tempo passa mais devagar — e cada noite tem gosto de viagem.</p>
+          <a href="sobre.html" class="link-gold reveal d3" style="margin-top:30px; display:inline-flex;">A arte do
+            bem-viver <span class="arrow">→</span></a>
+        </div>
+        <div style="display:flex; gap:22px; align-items:flex-end;">
+          <div class="vlabel reveal">Sousas · SP</div>
+          <div class="imgs" style="flex:1;">
+            <div class="frame tall gilt reveal-img">
+              <img src="assets/img/fachada.png" alt="Fachada terracota do Baretto di Brera à noite">
+              <div class="cap">La Facciata</div>
+            </div>
+            <div class="frame short gilt reveal-img d2">
+              <img src="assets/img/interior.png" alt="Interior aconchegante do Baretto di Brera">
+              <div class="cap">L'Interno</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOCALIZAÇÃO -->
+    <section class="section loca">
+      <div class="container grid">
+        <div class="info">
+          <p class="eyebrow reveal">La Posizione</p>
+          <h2 class="display d-xl reveal d1" style="margin:.3em 0">Em frente à Praça da Igreja, no <em>coração de
+              Sousas</em>.</h2>
+          <div class="addr reveal d2">
+            <div>
+              <div class="k">Endereço</div>
+              <div class="v">Rua José Pedroso, 10 — Centro<br>Sousas, Campinas · SP</div>
+            </div>
+            <div>
+              <div class="k">Referência</div>
+              <div class="v">Em frente à Praça da Igreja Santana</div>
+            </div>
+          </div>
+          <a class="btn btn-ghost reveal d3" href="contato.html">Como chegar &amp; horários</a>
+        </div>
+        <div class="map reveal-img d1">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3676.026725350419!2d-46.9743952!3d-22.8754593!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8cd45e691238d%3A0xc4eb78bc6e8b4cb4!2sR.%20Jos%C3%A9%20Pedroso%2C%2010%20-%20Sousas%2C%20Campinas%20-%20SP%2C%2013106-004!5e0!3m2!1spt-BR!2sbr!4v1717960000000!5m2!1spt-BR!2sbr"
+            style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- RODAPÉ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="grid">
+        <div>
+          <div class="fwordmark">Baretto<small>di Brera · L'arte dell'aperitivo</small></div>
+          <p style="margin-top:22px; max-width:30ch;">Aperitivo italiano e coquetelaria clássica no coração de Sousas.
+            Uma extensão do restaurante Brera.</p>
+        </div>
+        <div>
+          <h5>Navegação</h5>
+          <a href="index.html">Home</a>
+          <a href="sobre.html">Sobre</a>
+          <a href="contato.html">Contato</a>
+        </div>
+        <div>
+          <h5>Visite-nos</h5>
+          <p>Rua José Pedroso, 10</p>
+          <p>Centro · Sousas, Campinas — SP</p>
+          <p>Ter — Dom · a partir das 18h</p>
+        </div>
+        <div>
+          <h5>Contato</h5>
+          <a href="https://wa.me/5519994435384" target="_blank" rel="noopener">(19) 99443-5384</a>
+          <a href="https://wa.me/5519994435384?text=Ol%C3%A1!%20Gostaria%20de%20reservar%20uma%20mesa%20no%20Baretto%20di%20Brera."
+            target="_blank" rel="noopener">Reservas via WhatsApp</a>
+          <a href="#">Instagram</a>
+        </div>
+      </div>
+      <div class="base">
+        <span>© <span data-year>2026</span> Baretto di Brera</span>
+        <span>Sousas · Campinas · SP</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/baretto.js?v=3"></script>
+</body>
+
+</html>

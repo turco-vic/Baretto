@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato &amp; Reservas — Baretto di Brera</title>
+  <link rel="stylesheet" href="assets/baretto.css?v=4">
+  <style>
+    .c-hero {
+      background: var(--bordo);
+      color: var(--cream);
+      padding: 180px 0 clamp(70px, 9vw, 120px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .c-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(120% 90% at 18% 12%, rgba(215, 154, 81, .13), transparent 55%);
+    }
+
+    .c-hero .wrap {
+      position: relative;
+      z-index: 2;
+      max-width: 920px;
+    }
+
+    .c-hero h1 {
+      margin: .22em 0 .4em;
+    }
+
+    .c-hero .lead {
+      max-width: 50ch;
+    }
+
+    /* Reserva */
+    .reserva {
+      background: var(--bordo-deep);
+      color: var(--cream);
+    }
+
+    .reserva .grid {
+      display: grid;
+      grid-template-columns: .92fr 1.08fr;
+      gap: clamp(40px, 5vw, 80px);
+      align-items: center;
+    }
+
+    .reserva .icon {
+      width: 58px;
+      height: 58px;
+      border: 1px solid rgba(215, 154, 81, .5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      margin-bottom: 28px;
+    }
+
+    .reserva .icon svg {
+      width: 26px;
+      height: 26px;
+    }
+
+    .reserva h2 {
+      margin: 0 0 .4em;
+    }
+
+    .reserva .wa-big {
+      margin-top: 30px;
+    }
+
+    .reserva .phone {
+      margin-top: 24px;
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      color: var(--gold);
+    }
+
+    .reserva .note {
+      margin-top: 8px;
+      font-size: .78rem;
+      letter-spacing: .04em;
+    }
+
+    /* Form card */
+    .card {
+      background: var(--cream);
+      color: var(--ink);
+      padding: clamp(28px, 3.4vw, 46px);
+      box-shadow: 0 50px 90px -50px rgba(0, 0, 0, .7);
+    }
+
+    .card .ttl {
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: .66rem;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      margin-bottom: 22px;
+    }
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    .field label {
+      display: block;
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: .62rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 8px;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      font-family: var(--serif);
+      font-size: 1.08rem;
+      color: var(--ink);
+      background: transparent;
+      border: 0;
+      border-bottom: 1px solid rgba(42, 22, 16, .22);
+      padding: 8px 0;
+      transition: border-color .4s var(--ease);
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      outline: none;
+      border-color: var(--bordo);
+    }
+
+    .field textarea {
+      resize: none;
+    }
+
+    .row2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .card .submit {
+      width: 100%;
+      justify-content: center;
+      margin-top: 8px;
+    }
+
+    /* Informações */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(28px, 4vw, 56px);
+    }
+
+    .info-grid .col h3 {
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: .68rem;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      margin: 0 0 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(42, 22, 16, .14);
+    }
+
+    .info-grid .col p {
+      font-family: var(--serif);
+      font-size: 1.18rem;
+      line-height: 1.45;
+      color: var(--ink);
+      margin: 0 0 6px;
+    }
+
+    .info-grid .col .sub {
+      font-family: var(--sans);
+      font-size: .82rem;
+      color: var(--ink-soft);
+    }
+
+    /* Mapa */
+    .mapsec .grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: clamp(40px, 6vw, 84px);
+      align-items: center;
+    }
+
+    .mapsec .info {
+      max-width: 440px;
+    }
+
+    /* ---- Correção e Estilização do Bloco do Mapa ---- */
+    .map {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4/3.2;
+      /* Mantém a proporção exata definida no design */
+      overflow: hidden;
+      outline: 1px solid rgba(215, 154, 81, .5);
+      outline-offset: 10px;
+      border-radius: 2px;
+      background-color: #f7f2e8;
+      /* Base neutra para evitar flashes brancos */
+    }
+
+    /* Força o iframe a expandir sem deixar nenhuma fresta branca no fundo */
+    .map iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
+      border: 0;
+      display: block;
+      z-index: 1;
+      filter: grayscale(40%) contrast(110%) sepia(30%);
+      transition: filter 0.5s ease;
+    }
+
+    /* Camada superior que injeta o tom de ouro/creme do restaurante */
+    .map::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: #e3d3b8;
+      mix-blend-mode: color;
+      pointer-events: none;
+      /* Permite arrastar e interagir com o mapa */
+      opacity: 0.5;
+      z-index: 2;
+      transition: opacity 0.5s ease;
+    }
+
+    /* Efeito Interativo ao passar o mouse */
+    .map:hover::after {
+      opacity: 0;
+    }
+
+    .map:hover iframe {
+      filter: none;
+    }
+
+    .map svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    @media (max-width:1023px) {
+      .c-hero {
+        padding: 150px 0 70px;
+      }
+
+      .reserva .grid,
+      .mapsec .grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    @media (max-width:560px) {
+      .row2 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="nav" data-screen-label="Contato">
+    <a class="brand" href="index.html">Baretto<small>di Brera</small></a>
+    <nav class="links">
+      <a href="index.html">Home</a>
+      <a href="sobre.html">Sobre</a>
+      <a href="contato.html" class="active">Contato</a>
+    </nav>
+    <a class="reserve"
+      href="https://wa.me/5519994435384?text=Ol%C3%A1!%20Gostaria%20de%20reservar%20uma%20mesa%20no%20Baretto%20di%20Brera."
+      target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path
+          d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.477-.927z" />
+      </svg>
+      Reservar
+    </a>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </header>
+
+  <main class="page">
+
+    <!-- HERO -->
+    <section class="c-hero" data-screen-label="Contato — Hero">
+      <div class="container wrap">
+        <p class="eyebrow on-dark reveal">Contato &amp; Reservas</p>
+        <h1 class="display d-hero on-dark reveal d1">A arte de <em>receber</em>.</h1>
+        <p class="lead reveal d2">Seja para um aperitivo a dois ou um evento privado, será um prazer recebê-lo. Reserve
+          em poucos toques — atendimento direto, sem intermediários.</p>
+      </div>
+    </section>
+
+    <!-- RESERVA -->
+    <section class="section reserva" data-screen-label="Reserva">
+      <div class="container grid">
+        <div>
+          <div class="icon reveal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4">
+              <path d="M4 5h13a2 2 0 012 2v12a1 1 0 01-1.4.9L12 18l-4.6 1.9A1 1 0 016 19V7" />
+              <path d="M4 5v14" />
+            </svg>
+          </div>
+          <h2 class="display d-xl on-dark reveal d1">Reserva Instantânea</h2>
+          <p class="lead reveal d2">Garanta sua mesa ou planeje seu evento privado falando diretamente com a nossa
+            equipe pelo WhatsApp.</p>
+          <a class="btn btn-gold wa-big reveal d3"
+            href="https://wa.me/5519994435384?text=Ol%C3%A1!%20Gostaria%20de%20reservar%20uma%20mesa%20no%20Baretto%20di%20Brera."
+            target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.477-.927z" />
+            </svg>
+            WhatsApp · (19) 99443-5384
+          </a>
+          <p class="note muted reveal d3">Atendimento em tempo real · Ter — Dom</p>
+        </div>
+
+        <form class="card reveal-img d1" onsubmit="return reservaWA(event)">
+          <div class="ttl">Solicitar reserva</div>
+          <div class="field">
+            <label for="nome">Nome</label>
+            <input id="nome" name="nome" type="text" placeholder="Seu nome" required>
+          </div>
+          <div class="row2">
+            <div class="field">
+              <label for="data">Data</label>
+              <input id="data" name="data" type="date">
+            </div>
+            <div class="field">
+              <label for="pessoas">Pessoas</label>
+              <select id="pessoas" name="pessoas">
+                <option>2 pessoas</option>
+                <option>1 pessoa</option>
+                <option>3 pessoas</option>
+                <option>4 pessoas</option>
+                <option>5 pessoas</option>
+                <option>6 pessoas</option>
+                <option>7+ pessoas</option>
+                <option>Evento privado</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="hora">Horário</label>
+            <select id="hora" name="hora">
+              <option>18:00</option>
+              <option>19:00</option>
+              <option>20:00</option>
+              <option>21:00</option>
+              <option>22:00</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="obs">Observações (opcional)</label>
+            <textarea id="obs" name="obs" rows="2" placeholder="Aniversário, mesa na calçada, etc."></textarea>
+          </div>
+          <button type="submit" class="btn btn-gold submit">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.477-.927z" />
+            </svg>
+            Enviar pelo WhatsApp
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- INFORMAÇÕES -->
+    <section class="section paper">
+      <div class="container">
+        <p class="eyebrow reveal" style="margin-bottom:34px">Informazioni</p>
+        <div class="info-grid">
+          <div class="col reveal">
+            <h3>Horários</h3>
+            <p>Terça a Domingo</p>
+            <p class="sub">A partir das 18h00</p>
+            <p style="margin-top:14px">Segunda</p>
+            <p class="sub">Fechado</p>
+          </div>
+          <div class="col reveal d1">
+            <h3>Localização</h3>
+            <p>Rua José Pedroso, 10</p>
+            <p>Centro · Sousas</p>
+            <p class="sub" style="margin-top:6px">Campinas — SP</p>
+            <p class="sub" style="margin-top:10px">Em frente à Praça da Igreja Santana</p>
+          </div>
+          <div class="col reveal d2">
+            <h3>Contato</h3>
+            <p>(19) 99443-5384</p>
+            <p class="sub">WhatsApp · Reservas</p>
+            <p style="margin-top:14px"><a href="#"
+                style="color:var(--bordo); border-bottom:1px solid var(--gold);">@barettodibrera</a></p>
+            <p class="sub">Instagram</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MAPA -->
+    <section class="section mapsec">
+      <div class="container grid">
+        <div class="info">
+          <p class="eyebrow reveal">Come Arrivare</p>
+          <h2 class="display d-xl reveal d1" style="margin:.3em 0">No coração de <em>Sousas</em>.</h2>
+          <p class="lead reveal d2">Localizado estrategicamente próximo à praça da Igreja, um refúgio histórico com o
+            melhor do aperitivo milanês.</p>
+          <a class="btn btn-ghost reveal d3" style="margin-top:30px"
+            href="https://www.google.com/maps/search/?api=1&query=Rua+Jos%C3%A9+Pedroso+10+Sousas+Campinas"
+            target="_blank" rel="noopener">Abrir no Google Maps</a>
+        </div>
+        <div class="map reveal-img d1">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.2154562477383!2d-46.9654162!3d-22.8869871!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8cf7fa183c54d%3A0xc6cb5a6ec3ba07c0!2sR.%20Jos%C3%A9%20Pedroso%2C%2010%20-%20Centro%2C%20Campinas%20-%20SP%2C%2013106-008!5e0!3m2!1spt-BR!2sbr!4v1710000000000!5m2!1spt-BR!2sbr"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="grid">
+        <div>
+          <div class="fwordmark">Baretto<small>di Brera · L'arte dell'aperitivo</small></div>
+          <p style="margin-top:22px; max-width:30ch;">Aperitivo italiano e coquetelaria clássica no coração de Sousas.
+            Uma extensão do restaurante Brera.</p>
+        </div>
+        <div>
+          <h5>Navegação</h5>
+          <a href="index.html">Home</a>
+          <a href="sobre.html">Sobre</a>
+          <a href="contato.html">Contato</a>
+        </div>
+        <div>
+          <h5>Visite-nos</h5>
+          <p>Rua José Pedroso, 10</p>
+          <p>Centro · Sousas, Campinas — SP</p>
+          <p>Ter — Dom · a partir das 18h</p>
+        </div>
+        <div>
+          <h5>Contato</h5>
+          <a href="https://wa.me/5519994435384" target="_blank" rel="noopener">(19) 99443-5384</a>
+          <a href="https://wa.me/5519994435384?text=Ol%C3%A1!%20Gostaria%20de%20reservar%20uma%20mesa%20no%20Baretto%20di%20Brera."
+            target="_blank" rel="noopener">Reservas via WhatsApp</a>
+          <a href="#">Instagram</a>
+        </div>
+      </div>
+      <div class="base">
+        <span>© <span data-year>2026</span> Baretto di Brera</span>
+        <span>Sousas · Campinas · SP</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/baretto.js?v=3"></script>
+  <script>
+    function reservaWA(e) {
+      e.preventDefault();
+      var f = e.target;
+      var msg = 'Olá! Gostaria de fazer uma reserva no Baretto di Brera.';
+      var nome = f.nome.value.trim();
+      if (nome) msg += '\nNome: ' + nome;
+      if (f.pessoas.value) msg += '\nPessoas: ' + f.pessoas.value;
+      if (f.data.value) {
+        var p = f.data.value.split('-');
+        msg += '\nData: ' + (p.length === 3 ? p[2] + '/' + p[1] + '/' + p[0] : f.data.value);
+      }
+      if (f.hora.value) msg += '\nHorário: ' + f.hora.value;
+      var obs = f.obs.value.trim();
+      if (obs) msg += '\nObs: ' + obs;
+      window.open('https://wa.me/5519994435384?text=' + encodeURIComponent(msg), '_blank');
+      return false;
+    }
+  </script>
+</body>
+
+</html>

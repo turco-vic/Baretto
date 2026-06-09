@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre — O Ritual do Aperitivo · Baretto di Brera</title>
+  <link rel="stylesheet" href="assets/baretto.css?v=4">
+  <style>
+    .s-hero {
+      background: var(--bordo);
+      color: var(--cream);
+      padding: 180px 0 clamp(80px, 10vw, 130px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .s-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(120% 90% at 82% 10%, rgba(215, 154, 81, .13), transparent 55%);
+    }
+
+    .s-hero .wrap {
+      position: relative;
+      z-index: 2;
+      max-width: 980px;
+    }
+
+    .s-hero h1 {
+      margin: .22em 0 .4em;
+    }
+
+    .s-hero .lead {
+      max-width: 54ch;
+    }
+
+    .story {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 96px);
+      align-items: center;
+    }
+
+    .story+.story {
+      margin-top: clamp(72px, 9vw, 128px);
+    }
+
+    .story .media {
+      position: relative;
+    }
+
+    .story .media .frame,
+    .story .media .ph {
+      aspect-ratio: 4/5;
+      width: 100%;
+    }
+
+    .story.rev .txt {
+      order: 2;
+    }
+
+    .story.rev .media {
+      order: 1;
+    }
+
+    .story .num {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      color: var(--gold-deep);
+      letter-spacing: .1em;
+    }
+
+    .story h2 {
+      margin: .2em 0 .5em;
+    }
+
+    .story .body {
+      margin-top: 6px;
+    }
+
+    .quote {
+      background: var(--bordo);
+      color: var(--cream);
+    }
+
+    .quote .container {
+      max-width: 920px;
+      text-align: center;
+    }
+
+    .quote blockquote {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 500;
+      font-size: clamp(1.8rem, 3.4vw, 3rem);
+      line-height: 1.3;
+      margin: 0;
+      color: var(--cream);
+    }
+
+    .quote .who {
+      margin-top: 34px;
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: .72rem;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .quote .who small {
+      display: block;
+      margin-top: 8px;
+      color: #cdb6a6;
+      letter-spacing: .16em;
+      font-weight: 400;
+    }
+
+    .endcta {
+      background: var(--paper);
+      text-align: center;
+    }
+
+    .endcta .container {
+      max-width: 760px;
+    }
+
+    .endcta .btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 38px;
+    }
+
+    @media (max-width:1023px) {
+      .s-hero {
+        padding: 150px 0 80px;
+      }
+
+      .story {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .story.rev .txt {
+        order: 1;
+      }
+
+      .story.rev .media {
+        order: 2;
+      }
+
+      .story .media .frame,
+      .story .media .ph {
+        aspect-ratio: 4/3.2;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="nav" data-screen-label="Sobre">
+    <a class="brand" href="index.html">Baretto<small>di Brera</small></a>
+    <nav class="links">
+      <a href="index.html">Home</a>
+      <a href="sobre.html" class="active">Sobre</a>
+      <a href="contato.html">Contato</a>
+    </nav>
+    <a class="reserve"
+      href="https://wa.me/5519994435384?text=Ol%C3%A1!%20Gostaria%20de%20reservar%20uma%20mesa%20no%20Baretto%20di%20Brera."
+      target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path
+          d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.477-.927z" />
+      </svg>
+      Reservar
+    </a>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </header>
+
+  <main class="page">
+
+    <!-- HERO -->
+    <section class="s-hero" data-screen-label="Sobre — Hero">
+      <div class="container wrap">
+        <p class="eyebrow on-dark reveal">Sobre Nós</p>
+        <h1 class="display d-hero on-dark reveal d1">O Ritual do <em>Aperitivo</em></h1>
+        <p class="lead reveal d2">Em Sousas, resgatamos a essência do fim de tarde milanês — uma pausa sagrada entre o
+          dever e o prazer, onde o tempo desacelera e cada gole vira pequena celebração.</p>
+      </div>
+    </section>
+
+    <!-- NOSSA ORIGEM -->
+    <section class="section">
+      <div class="container">
+        <div class="story">
+          <div class="txt">
+            <span class="num reveal">01</span>
+            <h2 class="display d-lg reveal d1">Nossa Origem</h2>
+            <div class="body reveal d2">
+              <p>O Baretto nasceu do desejo de transplantar a alma de Milão para as ruas arborizadas de Sousas. Como
+                extensão do restaurante Brera, não se trata apenas de servir bebidas, mas de cultivar um estado de
+                espírito.</p>
+              <p class="muted">Inspirados pelos históricos bares italianos, abraçamos a tradição de que cada drink
+                merece ser acompanhado de uma pequena curadoria gastronômica — um gesto de hospitalidade genuína.</p>
+            </div>
+          </div>
+          <div class="media reveal-img d1">
+            <div class="ph gilt" data-ph="Foto — Aperol Spritz · close"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- A ARTE DO BEM-VIVER -->
+    <section class="section paper">
+      <div class="container">
+        <div class="story rev">
+          <div class="txt">
+            <span class="num reveal">02</span>
+            <h2 class="display d-lg reveal d1">A Arte do Bem-Viver</h2>
+            <div class="body reveal d2">
+              <p>A dolce vita não é luxo: é presença. É a mesa na calçada, a conversa que se alonga, o vinho que
+                acompanha a noite caindo sobre a praça.</p>
+              <p class="muted">Cada detalhe — da taça à luz quente sobre os azulejos — existe para que você desacelere.
+                Aqui, o tempo é o ingrediente mais generoso.</p>
+            </div>
+          </div>
+          <div class="media reveal-img d1">
+            <div class="frame gilt"><img src="assets/img/fachada.png" alt="Fachada terracota do Baretto di Brera"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- O CORAÇÃO DE SOUSAS -->
+    <section class="section bordo">
+      <div class="container">
+        <p class="eyebrow on-dark reveal" style="margin-bottom:18px">La Posizione</p>
+        <div class="story">
+          <div class="txt">
+            <span class="num reveal" style="color:var(--gold)">03</span>
+            <h2 class="display d-lg on-dark reveal d1">O Coração de Sousas</h2>
+            <div class="body reveal d2">
+              <p>Escolhemos Sousas a dedo. Em frente à Praça da Igreja Santana, somos o ponto de encontro para quem
+                busca qualidade sem ostentação.</p>
+              <p class="muted">Onde o charme rústico do vilarejo encontra a sofisticação discreta de um aperitivo bem
+                servido — a poucos passos do burburinho, longe da pressa.</p>
+            </div>
+          </div>
+          <div class="media reveal-img d1">
+            <div class="frame gilt"><img src="assets/img/interior.png" alt="Interior aconchegante do Baretto di Brera">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- A HOSPITALIDADE / QUOTE -->
+    <section class="section quote" data-screen-label="A Hospitalidade">
+      <div class="container">
+        <p class="eyebrow on-dark reveal" style="justify-content:center; margin-bottom:30px">A Hospitalidade</p>
+        <blockquote class="reveal d1">"O verdadeiro luxo reside na simplicidade de ser bem recebido. Cozinhamos como
+          quem recebe em casa — com honestidade e afeto."</blockquote>
+        <div class="who reveal d2">Marcelo Moscardi<small>Chef Executivo · Baretto di Brera</small></div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section endcta" data-screen-label="CTA Reserva">
+      <div class="container">
+        <p class="eyebrow reveal" style="justify-content:center">Prenota il tuo tavolo</p>
+        <h2 class="display d-xl reveal d1" style="margin:.3em 0">Venha viver o <em>aperitivo</em>.</h2>
+        <p class="lead reveal d2" style="margin:0 auto; max-width:46ch;">Reserve sua mesa diretamente pelo WhatsApp e
+          deixe o resto com a gente.</p>
+        <div class="btns reveal d3">
+          <a class="btn btn-gold"
+            href="https://wa.me/5519994435384?text=Ol%C3%A1!%20Gostaria%20de%20reservar%20uma%20mesa%20no%20Baretto%20di%20Brera."
+            target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.477-.927z" />
+            </svg>
+            Reservar via WhatsApp
+          </a>
+          <a class="btn btn-ghost" href="contato.html">Contato &amp; horários</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="grid">
+        <div>
+          <div class="fwordmark">Baretto<small>di Brera · L'arte dell'aperitivo</small></div>
+          <p style="margin-top:22px; max-width:30ch;">Aperitivo italiano e coquetelaria clássica no coração de Sousas.
+            Uma extensão do restaurante Brera.</p>
+        </div>
+        <div>
+          <h5>Navegação</h5>
+          <a href="index.html">Home</a>
+          <a href="sobre.html">Sobre</a>
+          <a href="contato.html">Contato</a>
+        </div>
+        <div>
+          <h5>Visite-nos</h5>
+          <p>Rua José Pedroso, 10</p>
+          <p>Centro · Sousas, Campinas — SP</p>
+          <p>Ter — Dom · a partir das 18h</p>
+        </div>
+        <div>
+          <h5>Contato</h5>
+          <a href="https://wa.me/5519994435384" target="_blank" rel="noopener">(19) 99443-5384</a>
+          <a href="https://wa.me/5519994435384?text=Ol%C3%A1!%20Gostaria%20de%20reservar%20uma%20mesa%20no%20Baretto%20di%20Brera."
+            target="_blank" rel="noopener">Reservas via WhatsApp</a>
+          <a href="#">Instagram</a>
+        </div>
+      </div>
+      <div class="base">
+        <span>© <span data-year>2026</span> Baretto di Brera</span>
+        <span>Sousas · Campinas · SP</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/baretto.js?v=3"></script>
+</body>
+
+</html>
